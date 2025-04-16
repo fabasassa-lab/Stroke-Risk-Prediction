@@ -238,6 +238,9 @@ Pada Tabel 2, disajikan informasi hasil prediksi dari model yang digunakan. Dari
 
 **---Akhir Laporan---**
 
+_Github:_
+https://github.com/fabasassa-lab/Stroke-Risk-Prediction
+
 _Referensi:_
 [1] Venketasubramanian, N., Yudiarto, F. L., & Tugasworo, D. (2022). Stroke burden and stroke services in Indonesia. Frontiers in Neurology, 13, 850282. https://doi.org/10.3389/fneur.2022.850282
 
