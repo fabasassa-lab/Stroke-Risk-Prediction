@@ -1,10 +1,18 @@
 # Laporan Proyek Machine Learning Terapan - Achmad Fauzihan Bagus Sajiwo
 
+<div align="center">
+	<p>STROKE RISK - PREDICTIVE ANALYSIS</p>
+</div>
+
+<div align="center">
+	<img src="https://github.com/fabasassa-lab/Stroke-Risk-Prediction/blob/main/image/stroke.png?raw=true">
+</div>
+
 ## Domain Proyek
 
-Stroke merupakan salah satu penyebab utama kematian dan kecacatan di Indonesia. Menurut studi Global Burden of Disease (GBD) tahun 2019, Indonesia memiliki angka kematian akibat stroke yang tinggi, dengan tingkat kematian yang disesuaikan berdasarkan usia dan jenis kelamin sebesar 193,3 per 100.000 penduduk[1].​
+Stroke merupakan salah satu penyebab utama kematian dan kecacatan di Indonesia. Menurut studi Global Burden of Disease (GBD) tahun 2019, Indonesia memiliki angka kematian akibat stroke yang tinggi, dengan tingkat kematian yang disesuaikan berdasarkan usia dan jenis kelamin sebesar 193,3 per 100.000 penduduk [1].​
 
-Prevalensi stroke di Indonesia juga menunjukkan tren peningkatan. Data dari Riset Kesehatan Dasar (Riskesdas) tahun 2018 mencatat bahwa prevalensi stroke meningkat dari 7 per 1.000 penduduk pada tahun 2013 menjadi 10,9 per 1.000 penduduk pada tahun 2018[1].​
+Prevalensi stroke di Indonesia juga menunjukkan tren peningkatan. Data dari Riset Kesehatan Dasar (Riskesdas) tahun 2018 mencatat bahwa prevalensi stroke meningkat dari 7 per 1.000 penduduk pada tahun 2013 menjadi 10,9 per 1.000 penduduk pada tahun 2018 [1].​
 
 Faktor risiko utama stroke meliputi hipertensi, diabetes, merokok, dan gaya hidup sedentari. Deteksi dini terhadap individu dengan risiko tinggi sangat penting untuk mencegah kejadian stroke. Namun, keterbatasan dalam akses layanan kesehatan dan kurangnya kesadaran masyarakat seringkali menghambat upaya pencegahan.​
 
@@ -13,45 +21,100 @@ Dalam konteks ini, pemanfaatan teknologi dan data science menjadi sangat penting
 
 ## Business Understanding
 
-Pada bagian ini, kamu perlu menjelaskan proses klarifikasi masalah.
-
-Bagian laporan ini mencakup:
+Pada bagian ini, akan menjelaskan mengenai proses klarifikasi masalah yang terdiri dari _Problem Statement_, _Goals_ dan _Solution Statements_.
 
 ### Problem Statements
 
-Menjelaskan pernyataan masalah latar belakang:
-- Pernyataan Masalah 1
-- Pernyataan Masalah 2
-- Pernyataan Masalah n
+Bagaimana mengidentifikasi pasien dengan risiko tinggi terhadap stroke sebelum gejala serius muncul.
 
 ### Goals
 
-Menjelaskan tujuan dari pernyataan masalah:
-- Jawaban pernyataan masalah 1
-- Jawaban pernyataan masalah 2
-- Jawaban pernyataan masalah n
+Tujuan dari proyek ini adalah untuk mengidentifikasi pasien dengan risiko tinggi terhadap stroke sebelum gejala serius muncul dengan membangun model klasifikasi yang mampu memprediksi apakah seseorang termasuk dalam kategori "berisiko stroke" berdasarkan informasi demografis yang ada.
 
-Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
+### Solution statements
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Menambahkan bagian “Solution Statement” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
-
-    ### Solution statements
-    - Mengajukan 2 atau lebih solution statement. Misalnya, menggunakan dua atau lebih algoritma untuk mencapai solusi yang diinginkan atau melakukan improvement pada baseline model dengan hyperparameter tuning.
-    - Solusi yang diberikan harus dapat terukur dengan metrik evaluasi.
+Solusi yang diusulkan adalah membangun dan membandingkan beberapa model klasifikasi seperti K-Nearest Neighbors (KNN), Random Forest, dan AdaBoost untuk memprediksi risiko stroke. 
+Untuk mengukur kinerja dari model yang dibangun, digunakan metrik evaluasi klasifikasi, yaitu:
+- Akurasi (Accuracy)
+- Precision
+- Recall (Sensitivity)
+- F1-Score
 
 ## Data Understanding
-Paragraf awal bagian ini menjelaskan informasi mengenai data yang Anda gunakan dalam proyek. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
+Data yang digunakan dalam proyek ini adalah **35000** data **Stroke Risk Prediction Dataset based on Literature** yang dapat diunduh dari situs [Kaggle](https://www.kaggle.com/datasets/mahatiratusher/stroke-risk-prediction-dataset-v2). Terdapat 19 fitur (kolom) yang terdapat pada dataset ini.
 
-Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
+### Variabel-variabel pada Stroke Risk Prediction Dataset based on Literature dataset adalah sebagai berikut:
 
-### Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
-- accepts : merupakan jenis pembayaran yang diterima pada restoran tertentu.
-- cuisine : merupakan jenis masakan yang disajikan pada restoran.
-- dst
+1. Chest Pain	
+- Binary (0/1): Menunjukkan apakah individu mengalami nyeri dada, gejala umum kondisi kardiovaskular.
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data atau exploratory data analysis.
+2. Shortness of Breath	
+- Binary (0/1): Menunjukkan apakah orang tersebut mengalami kesulitan bernapas, yang mungkin mengindikasikan masalah jantung atau paru-paru.
+
+3. Irregular Heartbeat	
+- Binary (0/1): Menunjukkan apakah orang tersebut memiliki detak jantung tidak teratur, faktor risiko stroke yang potensial.
+
+4. Fatigue & Weakness	
+- Binary (0/1): Menunjukkan kelelahan terus-menerus dan kelemahan otot, tanda-tanda umum masalah kardiovaskular.
+
+5. Dizziness	
+- Binary (0/1): Melaporkan apakah individu tersebut sering mengalami pusing, yang mungkin terkait dengan sirkulasi yang buruk.
+
+6. Swelling (Edema)	
+- Binary (0/1): Menunjukkan pembengkakan pada ekstremitas karena retensi cairan, masalah kardiovaskular yang potensial.
+
+7. Neck/Jaw/Pain	
+- Binary (0/1): Menjelaskan nyeri di area ini, yang dapat menjadi tanda peringatan stroke atau serangan jantung.
+
+8. Excessive Sweating	
+- Binary (0/1): Menunjukkan apakah individu mengalami keringat yang tidak biasa, yang dapat mengindikasikan gangguan kardiovaskular.
+
+9. Persistent Cough	
+- Binary (0/1): Menunjukkan batuk kronis, yang dapat dikaitkan dengan gagal jantung.
+
+10. Nausea/Vomiting	
+- Binary (0/1): Melaporkan mual atau muntah yang sering, yang dapat dikaitkan dengan kejadian kardiovaskular.
+
+11. High Blood Pressure	
+- Binary (0/1): Mewakili apakah orang tersebut memiliki tekanan darah tinggi, faktor risiko utama untuk stroke.
+
+12. Chest Discomfort (Activity)	
+- Binary (0/1): Menunjukkan apakah individu mengalami ketidaknyamanan dada selama aktivitas fisik.
+
+13. Cold Hands/Feet	
+- Binary (0/1): Menunjukkan apakah orang tersebut sering mengalami ekstremitas dingin, yang merupakan tanda kemungkinan masalah sirkulasi.
+
+14. Snoring/Sleep Apnea	
+- Binary (0/1): Melaporkan apakah orang tersebut mengalami apnea tidur, yang dapat meningkatkan risiko stroke.
+
+15. Anxiety/Feeling of Doom	
+- Binary (0/1): Menunjukkan apakah orang tersebut sering mengalami kecemasan atau perasaan akan datangnya malapetaka, yang dapat dikaitkan dengan gangguan kardiovaskular.
+
+16. Stroke Risk Percentage
+- Continuous (0-100%): Perkiraan persentase risiko terkena stroke, berdasarkan tingkat keparahan gejala dan indikator medis.
+
+17. At Risk (Binary)	
+- Binary (0/1): Menunjukkan apakah orang tersebut diklasifikasikan sebagai berisiko terkena stroke (1) atau tidak (0).
+
+18. Age	
+- Integer: Usia individu, faktor penting dalam menilai risiko stroke.
+
+19. Gender
+- String: Male/Female
+
+### Explanatory Data Analysis
+
+1. Distribusi Stroke Risk
+(https://github.com/fabasassa-lab/Stroke-Risk-Prediction/blob/main/image/risk.png?raw=true)
+
+2. Distribusi Usia
+(https://github.com/fabasassa-lab/Stroke-Risk-Prediction/blob/main/image/age_distribution.png?raw=true)
+
+3. Distribusi Gender vs Risk
+(https://github.com/fabasassa-lab/Stroke-Risk-Prediction/blob/main/image/gender_risk.png?raw=true)
+
+4. Confussion Matrix
+(https://github.com/fabasassa-lab/Stroke-Risk-Prediction/blob/main/image/cm_analysis.png?raw=true)
 
 ## Data Preparation
 Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
