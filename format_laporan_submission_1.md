@@ -105,31 +105,49 @@ Data yang digunakan dalam proyek ini adalah **35000** data **Stroke Risk Predict
 ### Explanatory Data Analysis
 
 1. Distribusi Stroke Risk
-(https://github.com/fabasassa-lab/Stroke-Risk-Prediction/blob/main/image/risk.png?raw=true)
+
+![stroke_risk](https://github.com/fabasassa-lab/Stroke-Risk-Prediction/blob/main/image/risk.png?raw=true)
 
 2. Distribusi Usia
-(https://github.com/fabasassa-lab/Stroke-Risk-Prediction/blob/main/image/age_distribution.png?raw=true)
+ 
+![age_distribution](https://github.com/fabasassa-lab/Stroke-Risk-Prediction/blob/main/image/age_distribution.png?raw=true)
 
 3. Distribusi Gender vs Risk
-(https://github.com/fabasassa-lab/Stroke-Risk-Prediction/blob/main/image/gender_risk.png?raw=true)
+ 
+![gender_risk](https://github.com/fabasassa-lab/Stroke-Risk-Prediction/blob/main/image/gender_risk.png?raw=true)
 
-4. Confussion Matrix
-(https://github.com/fabasassa-lab/Stroke-Risk-Prediction/blob/main/image/cm_analysis.png?raw=true)
+4. Correlation Matrix
+
+![cm_analysis](https://github.com/fabasassa-lab/Stroke-Risk-Prediction/blob/main/image/cm_analysis.png?raw=true)
+
+Pada Gambar 4, _plot_ diatas melihatkan observasi korelasi antara fitur _numerical_ dengan fitur target
 
 ## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
+1. Seleksi Data
+- Pada tahap awal, dilakukan pemeriksaan terhadap nilai yang hilang (missing values) di setiap kolom dataset. Jika ditemukan, nilai tersebut dapat diatasi dengan metode seperti imputasi (mean, median, modus) atau dihapus tergantung pada proporsi dan pentingnya kolom tersebut.
+- Alasan: Missing values dapat menyebabkan error saat pelatihan model atau menghasilkan hasil yang bias jika tidak ditangani dengan tepat.
+
+2. Label Encoding
+- Variabel kategorik seperti gender dikonversi ke dalam bentuk numerik menggunakan metode Label Encoding agar bisa digunakan oleh algoritma pembelajaran mesin.
+- Alasan: Sebagian besar algoritma machine learning tidak dapat bekerja langsung dengan data kategorik, sehingga perlu diubah ke dalam representasi numerik.
+
+3. Feature Selection
+- Pemilihan fitur dilakukan untuk menyaring variabel-variabel yang benar-benar berkontribusi terhadap prediksi atau **redundan**. Misalnya dengan menghindari fitur yang memiliki korelasi sangat tinggi satu sama lain atau yang tidak memiliki hubungan dengan variabel target at_risk.
+- Alasan: Feature selection bertujuan untuk meningkatkan akurasi model, menghindari overfitting, dan mempercepat waktu pelatihan dengan hanya menyertakan fitur yang penting.
+
+4. Splitting Data
+- Dataset dibagi menjadi dua bagian: data latih (train) dan data uji (test), biasanya dengan perbandingan 80:20.
+- Alasan: Tujuannya adalah untuk mengevaluasi kemampuan generalisasi model. Model dilatih pada data latih dan dievaluasi pada data uji yang tidak pernah dilihat sebelumnya.
 
 ## Modeling
-Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
+Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Tahapan ini menggunakan tiga algoritma, yaitu **KNN**, **Random Forest** dan **AdaBoost**.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
-- Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
-- Jika menggunakan dua atau lebih algoritma pada solution statement, maka pilih model terbaik sebagai solusi. **Jelaskan mengapa memilih model tersebut sebagai model terbaik**.
+- Dalam membangun model **KNN (K-Nearest Neighbors)**, digunakan module KNeighborsClassifier dari library sklearn. Digunakan parameter n_neighbors=5 dan weights='uniform' untuk membangun model. Untuk melakukan training, digunakan .fit(X_train, y_train) untuk fitting. Kemudian, untuk melakukan prediksi, digunakan .predict(X_test).
+
+- Dalam membangun model **Random Forest**, digunakan module RandomForestClassifier dari library sklearn. Digunakan parameter n_estimators=100, max_depth=None dan random_state=42 untuk membangun model. Untuk melakukan training, digunakan .fit(X_train, y_train) untuk fitting. Kemudian, untuk melakukan prediksi, digunakan .predict(X_test).
+
+- Dalam membangun model **AdaBoost**, digunakan module AdaBoostClassifier dari library sklearn. Digunakan parameter n_estimators=50, learning_rate=1.0, dan random_state=42 untuk membangun model. Untuk melakukan training, digunakan .fit(X_train, y_train) untuk fitting. Kemudian, untuk melakukan prediksi, digunakan .predict(X_test).
 
 ## Evaluation
 Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
