@@ -141,16 +141,62 @@ Pada Gambar 4, _plot_ diatas melihatkan observasi korelasi antara fitur _numeric
 - Alasan: Tujuannya adalah untuk mengevaluasi kemampuan generalisasi model. Model dilatih pada data latih dan dievaluasi pada data uji yang tidak pernah dilihat sebelumnya.
 
 ## Modeling
-Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Tahapan ini menggunakan tiga algoritma, yaitu **KNN**, **Random Forest** dan **AdaBoost**.
+Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Tahapan ini menggunakan tiga algoritma, yaitu **KNN**, **Random Forest** dan **AdaBoost**. Hasil akhirnya adalah untuk mencari model terbaik sebagai solusi.
 
-- Dalam membangun model **KNN (K-Nearest Neighbors)**, digunakan module KNeighborsClassifier dari library sklearn. Digunakan parameter n_neighbors=5 dan weights='uniform' untuk membangun model. Untuk melakukan training, digunakan .fit(X_train, y_train) untuk fitting. Kemudian, untuk melakukan prediksi, digunakan .predict(X_test).
+Dalam membangun model **KNN (K-Nearest Neighbors)**, digunakan module KNeighborsClassifier dari library sklearn. Digunakan parameter n_neighbors=5 dan weights='uniform' untuk membangun model. Untuk melakukan training, digunakan .fit(X_train, y_train) untuk fitting. Kemudian, untuk melakukan prediksi, digunakan .predict(X_test).
 
-- Dalam membangun model **Random Forest**, digunakan module RandomForestClassifier dari library sklearn. Digunakan parameter n_estimators=100, max_depth=None dan random_state=42 untuk membangun model. Untuk melakukan training, digunakan .fit(X_train, y_train) untuk fitting. Kemudian, untuk melakukan prediksi, digunakan .predict(X_test).
+- Kelebihan:
+	- Mudah dipahami dan diimplementasikan: KNN merupakan salah satu algoritma yang paling sederhana dan mudah dipahami.
+	- Non-parametric: KNN tidak membuat asumsi tentang distribusi data, sehingga sangat berguna untuk data yang tidak memiliki distribusi tertentu.
+	- Dapat digunakan untuk klasifikasi dan regresi: Meskipun lebih sering digunakan untuk klasifikasi, KNN juga bisa digunakan untuk regresi.
+	- Adaptif dengan data baru: KNN dapat segera diadaptasi dengan data baru tanpa memerlukan pelatihan ulang.
+- Kekurangan:
+	- Kompleksitas tinggi saat data besar: KNN membutuhkan waktu komputasi yang lama pada dataset yang besar karena harus menghitung jarak antara titik data dengan semua data lainnya.
+	- Sensitif terhadap fitur yang tidak relevan: Kinerja KNN dapat sangat dipengaruhi oleh data fitur yang tidak relevan atau memiliki skala yang berbeda.
+	- Memerlukan memori besar: KNN membutuhkan penyimpanan seluruh dataset karena memerlukan data tersebut untuk melakukan prediksi.
+	-Skalabilitas buruk: Dengan bertambahnya data, KNN mengalami kesulitan dalam hal kecepatan dan performa.
 
-- Dalam membangun model **AdaBoost**, digunakan module AdaBoostClassifier dari library sklearn. Digunakan parameter n_estimators=50, learning_rate=1.0, dan random_state=42 untuk membangun model. Untuk melakukan training, digunakan .fit(X_train, y_train) untuk fitting. Kemudian, untuk melakukan prediksi, digunakan .predict(X_test).
+Dalam membangun model **Random Forest**, digunakan module RandomForestClassifier dari library sklearn. Digunakan parameter n_estimators=100, max_depth=None dan random_state=42 untuk membangun model. Untuk melakukan training, digunakan .fit(X_train, y_train) untuk fitting. Kemudian, untuk melakukan prediksi, digunakan .predict(X_test).
+
+- Kelebihan:
+	- Kinerja yang baik pada dataset besar: Random Forest adalah algoritma ensemble yang terdiri dari banyak pohon keputusan dan dapat menangani dataset besar dengan baik.
+	- Robust terhadap overfitting: Karena menggunakan metode bootstrap aggregation (bagging), Random Forest cenderung lebih tahan terhadap overfitting dibandingkan pohon keputusan tunggal.
+	-Dapat menangani data yang hilang (missing data): Random Forest dapat mengatasi data yang hilang tanpa memerlukan imputasi atau pengisian data yang hilang.
+	- Menangani data yang sangat tidak seimbang dengan baik: Random Forest dapat menangani masalah kelas yang tidak seimbang dengan lebih baik.
+- Kekurangan:
+	- Kebutuhan komputasi tinggi: Model Random Forest membutuhkan lebih banyak sumber daya komputasi dan waktu pelatihan, terutama dengan jumlah pohon yang sangat banyak.
+	- Kurang interpretatif: Model Random Forest menghasilkan banyak pohon keputusan, yang membuatnya lebih sulit untuk diinterpretasikan dibandingkan dengan model pohon keputusan tunggal.
+	- Tidak cocok untuk masalah dengan data spasial atau urut (sequential data): Random Forest tidak dapat menangani urutan waktu atau data yang berhubungan secara spasial secara efektif.
+
+Dalam membangun model **AdaBoost**, digunakan module AdaBoostClassifier dari library sklearn. Digunakan parameter n_estimators=50, learning_rate=1.0, dan random_state=42 untuk membangun model. Untuk melakukan training, digunakan .fit(X_train, y_train) untuk fitting. Kemudian, untuk melakukan prediksi, digunakan .predict(X_test).
+
+- Kelebihan:
+	- Meningkatkan kinerja model lemah: AdaBoost meningkatkan performa model dasar (weak learners) dengan menggabungkan hasil prediksi beberapa model.
+	- Tahan terhadap overfitting: Pada dataset dengan ukuran kecil hingga sedang, AdaBoost cenderung lebih tahan terhadap overfitting.
+	- Kemampuan untuk menangani data yang kompleks: AdaBoost bisa menangani data dengan distribusi yang kompleks.
+	- Memperbaiki kesalahan model sebelumnya: Dengan memfokuskan lebih banyak perhatian pada data yang salah diklasifikasikan oleh model sebelumnya, AdaBoost dapat memberikan hasil yang lebih baik.
+- Kekurangan:
+	- Sensitif terhadap outlier: AdaBoost dapat menjadi sangat sensitif terhadap outlier karena memberikan bobot yang lebih besar pada data yang sulit untuk diklasifikasikan.
+	- Memerlukan banyak iterasi: Kadang-kadang AdaBoost membutuhkan banyak iterasi untuk memberikan hasil yang baik, yang bisa mempengaruhi waktu pelatihan.
+	- Rentan terhadap model dasar yang lemah: Jika model dasar (weak learner) yang digunakan terlalu sederhana atau tidak cukup kuat, AdaBoost mungkin tidak menghasilkan model yang baik.
 
 ## Evaluation
-Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
+Dalam proyek ini, akurasi digunakan sebagai metrik evaluasi utama untuk mengukur kinerja setiap model dalam klasifikasi penyakit stroke. Akurasi mengukur persentase prediksi yang benar dari total prediksi yang dilakukan oleh model.
+
+Akurasi (Accuracy):
+
+- Akurasi mengukur proporsi prediksi yang benar terhadap total prediksi yang dilakukan. Ini adalah metrik yang sangat umum digunakan dalam masalah klasifikasi. Akurasi dihitung dengan rumus:
+
+Akurasi
+=
+Jumlah prediksi yang benar
+Jumlah total prediksi
+Akurasi= 
+Jumlah total prediksi
+Jumlah prediksi yang benar
+​
+ 
+Pada kasus ini, akurasi digunakan untuk menilai seberapa baik model dapat memprediksi status "at_risk" (mempunyai kemungkinan terkena stroke atau tidak) berdasarkan data yang tersedia.
 
 Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, precision, recall, dan F1 score**. Jelaskan mengenai beberapa hal berikut:
 - Penjelasan mengenai metrik yang digunakan
