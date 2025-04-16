@@ -46,58 +46,58 @@ Data yang digunakan dalam proyek ini adalah **35000** data **Stroke Risk Predict
 ### Variabel-variabel pada Stroke Risk Prediction Dataset based on Literature dataset adalah sebagai berikut:
 
 1. Chest Pain	
-- Binary (0/1): Menunjukkan apakah individu mengalami nyeri dada, gejala umum kondisi kardiovaskular.
+- Integer (0/1): Menunjukkan apakah individu mengalami nyeri dada, gejala umum kondisi kardiovaskular.
 
 2. Shortness of Breath	
-- Binary (0/1): Menunjukkan apakah orang tersebut mengalami kesulitan bernapas, yang mungkin mengindikasikan masalah jantung atau paru-paru.
+- Integer (0/1): Menunjukkan apakah orang tersebut mengalami kesulitan bernapas, yang mungkin mengindikasikan masalah jantung atau paru-paru.
 
 3. Irregular Heartbeat	
-- Binary (0/1): Menunjukkan apakah orang tersebut memiliki detak jantung tidak teratur, faktor risiko stroke yang potensial.
+- Integer (0/1): Menunjukkan apakah orang tersebut memiliki detak jantung tidak teratur, faktor risiko stroke yang potensial.
 
 4. Fatigue & Weakness	
-- Binary (0/1): Menunjukkan kelelahan terus-menerus dan kelemahan otot, tanda-tanda umum masalah kardiovaskular.
+- Integer (0/1): Menunjukkan kelelahan terus-menerus dan kelemahan otot, tanda-tanda umum masalah kardiovaskular.
 
 5. Dizziness	
-- Binary (0/1): Melaporkan apakah individu tersebut sering mengalami pusing, yang mungkin terkait dengan sirkulasi yang buruk.
+- Integer (0/1): Melaporkan apakah individu tersebut sering mengalami pusing, yang mungkin terkait dengan sirkulasi yang buruk.
 
 6. Swelling (Edema)	
-- Binary (0/1): Menunjukkan pembengkakan pada ekstremitas karena retensi cairan, masalah kardiovaskular yang potensial.
+- Integer (0/1): Menunjukkan pembengkakan pada ekstremitas karena retensi cairan, masalah kardiovaskular yang potensial.
 
 7. Neck/Jaw/Pain	
-- Binary (0/1): Menjelaskan nyeri di area ini, yang dapat menjadi tanda peringatan stroke atau serangan jantung.
+- Integer (0/1): Menjelaskan nyeri di area ini, yang dapat menjadi tanda peringatan stroke atau serangan jantung.
 
 8. Excessive Sweating	
-- Binary (0/1): Menunjukkan apakah individu mengalami keringat yang tidak biasa, yang dapat mengindikasikan gangguan kardiovaskular.
+- Integer (0/1): Menunjukkan apakah individu mengalami keringat yang tidak biasa, yang dapat mengindikasikan gangguan kardiovaskular.
 
 9. Persistent Cough	
-- Binary (0/1): Menunjukkan batuk kronis, yang dapat dikaitkan dengan gagal jantung.
+- Integer (0/1): Menunjukkan batuk kronis, yang dapat dikaitkan dengan gagal jantung.
 
 10. Nausea/Vomiting	
-- Binary (0/1): Melaporkan mual atau muntah yang sering, yang dapat dikaitkan dengan kejadian kardiovaskular.
+- Integer (0/1): Melaporkan mual atau muntah yang sering, yang dapat dikaitkan dengan kejadian kardiovaskular.
 
 11. High Blood Pressure	
-- Binary (0/1): Mewakili apakah orang tersebut memiliki tekanan darah tinggi, faktor risiko utama untuk stroke.
+- Integer (0/1): Mewakili apakah orang tersebut memiliki tekanan darah tinggi, faktor risiko utama untuk stroke.
 
 12. Chest Discomfort (Activity)	
-- Binary (0/1): Menunjukkan apakah individu mengalami ketidaknyamanan dada selama aktivitas fisik.
+- Integer (0/1): Menunjukkan apakah individu mengalami ketidaknyamanan dada selama aktivitas fisik.
 
 13. Cold Hands/Feet	
-- Binary (0/1): Menunjukkan apakah orang tersebut sering mengalami ekstremitas dingin, yang merupakan tanda kemungkinan masalah sirkulasi.
+- Integer (0/1): Menunjukkan apakah orang tersebut sering mengalami ekstremitas dingin, yang merupakan tanda kemungkinan masalah sirkulasi.
 
 14. Snoring/Sleep Apnea	
-- Binary (0/1): Melaporkan apakah orang tersebut mengalami apnea tidur, yang dapat meningkatkan risiko stroke.
+- Integer (0/1): Melaporkan apakah orang tersebut mengalami apnea tidur, yang dapat meningkatkan risiko stroke.
 
 15. Anxiety/Feeling of Doom	
-- Binary (0/1): Menunjukkan apakah orang tersebut sering mengalami kecemasan atau perasaan akan datangnya malapetaka, yang dapat dikaitkan dengan gangguan kardiovaskular.
+- Integer (0/1): Menunjukkan apakah orang tersebut sering mengalami kecemasan atau perasaan akan datangnya malapetaka, yang dapat dikaitkan dengan gangguan kardiovaskular.
 
 16. Stroke Risk Percentage
-- Continuous (0-100%): Perkiraan persentase risiko terkena stroke, berdasarkan tingkat keparahan gejala dan indikator medis.
+- Float (0-100): Perkiraan persentase risiko terkena stroke, berdasarkan tingkat keparahan gejala dan indikator medis.
 
 17. At Risk (Binary)	
-- Binary (0/1): Menunjukkan apakah orang tersebut diklasifikasikan sebagai berisiko terkena stroke (1) atau tidak (0).
+- Integer (0/1): Menunjukkan apakah orang tersebut diklasifikasikan sebagai berisiko terkena stroke (1) atau tidak (0).
 
 18. Age	
-- Integer: Usia individu, faktor penting dalam menilai risiko stroke.
+- Integer (18-86): Usia individu, faktor penting dalam menilai risiko stroke.
 
 19. Gender
 - String: Male/Female
@@ -108,19 +108,25 @@ Data yang digunakan dalam proyek ini adalah **35000** data **Stroke Risk Predict
 
 ![stroke_risk](https://github.com/fabasassa-lab/Stroke-Risk-Prediction/blob/main/image/risk.png?raw=true)
 
+Pada Gambar 1, _plot_ di atas melihatkan jumlah penyebaran data
+
 2. Distribusi Usia
  
 ![age_distribution](https://github.com/fabasassa-lab/Stroke-Risk-Prediction/blob/main/image/age_distribution.png?raw=true)
+
+Pada Gambar 2, _plot_ di atas melihatkan distribusi usia pada dataset **Stroke Risk Prediction Dataset based on Literature**. Usia paling banyak terdapat pada rentang 30-34 tahun.
 
 3. Distribusi Gender vs Risk
  
 ![gender_risk](https://github.com/fabasassa-lab/Stroke-Risk-Prediction/blob/main/image/gender_risk.png?raw=true)
 
+Pada Gambar 3, _plot_ di atas melihatkan distribusi gender pada dataset **Stroke Risk Prediction Dataset based on Literature**. Gender yang terkena penyakit stroke kebanyakan dari gender male.
+
 4. Correlation Matrix
 
 ![cm_analysis](https://github.com/fabasassa-lab/Stroke-Risk-Prediction/blob/main/image/cm_analysis.png?raw=true)
 
-Pada Gambar 4, _plot_ diatas melihatkan observasi korelasi antara fitur _numerical_ dengan fitur target
+Pada Gambar 4, _plot_ di atas melihatkan observasi korelasi antara fitur _numerical_ dengan fitur target
 
 ## Data Preparation
 
@@ -199,14 +205,38 @@ Dimana:
 Pada kasus ini, akurasi digunakan untuk menilai seberapa baik model dapat memprediksi status "at_risk" (mempunyai kemungkinan terkena stroke atau tidak) berdasarkan data yang tersedia.
 
 <div align="center">
-	<img src="https://github.com/fabasassa-lab/Stroke-Risk-Prediction/blob/main/image/akurasi.png?raw=true">
+	<img src="https://github.com/fabasassa-lab/Stroke-Risk-Prediction/blob/main/image/nilai.png?raw=true">
 </div>
 
+Pada Gambar di atas, _plot_ yang disajikan di atas, dapat diketahui bahwa model **Random Forest** memberikan nilai akurasi yang paling tinggi. Sehingga, model **Random Forest** lah yang dipilih sebagai model terbaik untuk melakukan klasifikasi penyakit stroke.
 
+Tabel 1. Hasil Evaluasi Model
+|                 | train	  |	test        |
+|-----------------|-----------|-------------|
+|KNN		      | 0.933464  |	0.903571    |
+|AdaBoost	      | 0.933857  |	0.934286    |
+|RandomForest	  | 1.0  |	0.973286    |
 
+Hasil dari _modeling_ dapat dilihat pada Tabel 1. Tabel diatas memberikan informasi detail terkait hasil _training_ dan _testing_
 
+Tabel 2. Hasil Prediksi
 
-**---Ini adalah bagian akhir laporan---**
+|    | y_true |	prediksi_KNN | prediksi_AdaBoost     | prediksi_RandomForest |
+|----|--------|--------------|-----------------------|-----------------------|
+|17813  | 1      | 1          | 0                   | 0                   |
+|6857| 0      | 0          | 0                   | 0                   |
+|7672| 1      | 1          | 1                   | 1                   |
+|9704| 1      | 1          | 1                   | 1                   |
+|14303| 0      | 0          | 0                   | 0                   |
+|26304| 1      | 1          | 1                   | 1                   |
+|3202| 0      | 0          | 0                   | 0                   |
+|27310| 0      | 0          | 0                   | 0                   |
+|11215| 0      | 0          | 0                   | 0                   |
+|20490| 0      | 0          | 0                   | 0                   |
+
+Pada Tabel 2, disajikan informasi hasil prediksi dari model yang digunakan. Dari tabel yang disajikan dapat dilihat bahwa prediksi menggunakan **Random Forest**, **KNN** maupun **AdaBoost** memiliki hasil sesuai dengan data aslinya _`y_true`_. Melihat hasil prediksi dan nilai akurasi yang telah didapat, model **Random Forest** lah yang dipilih sebagai model terbaik untuk melakukan klasifikasi penyakit stroke. Dan melihat dari keberhasilan prediksi menggunakan **Random Forest** maka proyek ini mampu dan berhasil menyelesaikan _Goals_ yang diinginkan.
+
+**---Akhir Laporan---**
 
 _Referensi:_
 [1] Venketasubramanian, N., Yudiarto, F. L., & Tugasworo, D. (2022). Stroke burden and stroke services in Indonesia. Frontiers in Neurology, 13, 850282. https://doi.org/10.3389/fneur.2022.850282
