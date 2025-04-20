@@ -33,12 +33,13 @@ Tujuan dari proyek ini adalah untuk mengidentifikasi pasien dengan risiko tinggi
 
 ### Solution statements
 
-Solusi yang diusulkan adalah membangun dan membandingkan beberapa model klasifikasi seperti K-Nearest Neighbors (KNN), Random Forest, dan AdaBoost untuk memprediksi risiko stroke. 
+Solusi yang diusulkan adalah membangun dan membandingkan beberapa model klasifikasi untuk memprediksi risiko stroke, yaitu:
+- K-Nearest Neighbors (KNN)
+- Random Forest
+- AdaBoost
+
 Untuk mengukur kinerja dari model yang dibangun, digunakan metrik evaluasi klasifikasi, yaitu:
 - Akurasi (Accuracy)
-- Precision
-- Recall (Sensitivity)
-- F1-Score
 
 ## Data Understanding
 Data yang digunakan dalam proyek ini adalah **35000** data **Stroke Risk Prediction Dataset based on Literature** yang dapat diunduh dari situs [Kaggle](https://www.kaggle.com/datasets/mahatiratusher/stroke-risk-prediction-dataset-v2). Terdapat 19 fitur (kolom) yang terdapat pada dataset ini.
@@ -108,7 +109,7 @@ Data yang digunakan dalam proyek ini adalah **35000** data **Stroke Risk Predict
 
 ![stroke_risk](https://github.com/fabasassa-lab/Stroke-Risk-Prediction/blob/main/image/risk.png?raw=true)
 
-Pada Gambar 1, _plot_ di atas melihatkan jumlah penyebaran data
+Pada Gambar 1, _plot_ di atas diperlihatkan bahwa data yang risk statusnya 0 (No) lebih banyak daripada data yang risk statusnya 1 (Yes).
 
 2. Distribusi Usia
  
@@ -149,7 +150,9 @@ Pada Gambar 4, _plot_ di atas melihatkan observasi korelasi antara fitur _numeri
 ## Modeling
 Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Tahapan ini menggunakan tiga algoritma, yaitu **KNN**, **Random Forest** dan **AdaBoost**. Hasil akhirnya adalah untuk mencari model terbaik sebagai solusi.
 
-Dalam membangun model **KNN (K-Nearest Neighbors)**, digunakan module KNeighborsClassifier dari library sklearn. Digunakan parameter n_neighbors=5 dan weights='uniform' untuk membangun model. Untuk melakukan training, digunakan .fit(X_train, y_train) untuk fitting. Kemudian, untuk melakukan prediksi, digunakan .predict(X_test).
+**KNN**
+
+- **Cara kerja** : Dalam membangun model **KNN (K-Nearest Neighbors)**, digunakan module KNeighborsClassifier dari library sklearn. Digunakan parameter n_neighbors=5 dan weights='uniform' untuk membangun model. Untuk melakukan training, digunakan .fit(X_train, y_train) untuk fitting. Kemudian, untuk melakukan prediksi, digunakan .predict(X_test).
 
 - Kelebihan:
 	- Mudah dipahami dan diimplementasikan: KNN merupakan salah satu algoritma yang paling sederhana dan mudah dipahami.
@@ -162,7 +165,9 @@ Dalam membangun model **KNN (K-Nearest Neighbors)**, digunakan module KNeighbors
 	- Memerlukan memori besar: KNN membutuhkan penyimpanan seluruh dataset karena memerlukan data tersebut untuk melakukan prediksi.
 	-Skalabilitas buruk: Dengan bertambahnya data, KNN mengalami kesulitan dalam hal kecepatan dan performa.
 
-Dalam membangun model **Random Forest**, digunakan module RandomForestClassifier dari library sklearn. Digunakan parameter n_estimators=100, max_depth=None dan random_state=42 untuk membangun model. Untuk melakukan training, digunakan .fit(X_train, y_train) untuk fitting. Kemudian, untuk melakukan prediksi, digunakan .predict(X_test).
+**Random Forest**
+
+- **Cara kerja** : Dalam membangun model **Random Forest**, digunakan module RandomForestClassifier dari library sklearn. Digunakan parameter n_estimators=100, max_depth=None dan random_state=42 untuk membangun model. Untuk melakukan training, digunakan .fit(X_train, y_train) untuk fitting. Kemudian, untuk melakukan prediksi, digunakan .predict(X_test).
 
 - Kelebihan:
 	- Kinerja yang baik pada dataset besar: Random Forest adalah algoritma ensemble yang terdiri dari banyak pohon keputusan dan dapat menangani dataset besar dengan baik.
@@ -174,7 +179,9 @@ Dalam membangun model **Random Forest**, digunakan module RandomForestClassifier
 	- Kurang interpretatif: Model Random Forest menghasilkan banyak pohon keputusan, yang membuatnya lebih sulit untuk diinterpretasikan dibandingkan dengan model pohon keputusan tunggal.
 	- Tidak cocok untuk masalah dengan data spasial atau urut (sequential data): Random Forest tidak dapat menangani urutan waktu atau data yang berhubungan secara spasial secara efektif.
 
-Dalam membangun model **AdaBoost**, digunakan module AdaBoostClassifier dari library sklearn. Digunakan parameter n_estimators=50, learning_rate=1.0, dan random_state=42 untuk membangun model. Untuk melakukan training, digunakan .fit(X_train, y_train) untuk fitting. Kemudian, untuk melakukan prediksi, digunakan .predict(X_test).
+**AdaBoost**
+
+- **Cara kerja** : Dalam membangun model **AdaBoost**, digunakan module AdaBoostClassifier dari library sklearn. Digunakan parameter n_estimators=50, learning_rate=1.0, dan random_state=42 untuk membangun model. Untuk melakukan training, digunakan .fit(X_train, y_train) untuk fitting. Kemudian, untuk melakukan prediksi, digunakan .predict(X_test).
 
 - Kelebihan:
 	- Meningkatkan kinerja model lemah: AdaBoost meningkatkan performa model dasar (weak learners) dengan menggabungkan hasil prediksi beberapa model.
